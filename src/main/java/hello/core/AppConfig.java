@@ -26,17 +26,20 @@ public class AppConfig {
 	//위에서 아래처럼 바꿈 -> 역할이 드러날 수 있도록
 	@Bean
 	public MemberService memberService() {
+		System.out.println("call AppConfig.memberService");
 		return new MemberServiceImpl(memberRepository()); //생성자 주입
 		//멤버서비스 임플을 만들고, 내가 만든 멤버서비스 임플은 메모리멤버리파지토리를 쓸거야! 하고 주입
 	}
 
 	@Bean
 	public MemoryMemberRepository memberRepository() {
+		System.out.println("call AppConfig.memberRepository");
 		return new MemoryMemberRepository();
 	}
 
 	@Bean
 	public OrderService orderService() {
+		System.out.println("call AppConfig.orderService");
 		return new OrderServiceImpl(memberRepository(), discountPolicy());
 	}
 
